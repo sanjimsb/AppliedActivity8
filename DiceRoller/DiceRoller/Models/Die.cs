@@ -11,6 +11,35 @@ namespace DiceRoller
 
         // which number is curren
         public int CurrentSide { get; set; }
+
+        public Die()
+        {
+            NumSides = 6;
+            Name = "d6";
+            Roll();
+        }
+
+        public Die(int numSides)
+        {
+            NumSides = numSides;
+            Name = "d" + numSides;
+            Roll();
+        }
+
+        public Die(int numSides, String name)
+        {
+            NumSides = numSides;
+            Name = name;
+            Roll();
+        }
+
+        public void Roll()
+        {
+            Random r = new Random();
+            CurrentSide = r.Next(NumSides) + 1;
+        }
     }
+
+    
 }
 
