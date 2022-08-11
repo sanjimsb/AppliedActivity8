@@ -62,6 +62,36 @@ namespace DiceRollerTests
             d.NumSides.Should().Be(sides);
             d.CurrentSide.Should().BeInRange(1, sides);
         }
+
+        [TestMethod]
+        [DataRow(3, 2)]
+        [DataRow(4, 2)]
+        [DataRow(8, 2)]
+        [DataRow(10, 2)]
+        [DataRow(12, 2)]
+        [DataRow(20, 2)]
+        public void SetSideUpChangesSide(int sides, int newSide)
+        {
+            Die d = new Die(sides);
+            d.SetSideUp(newSide);
+            d.CurrentSide.Should().Be(newSide);
+        }
+
+
+
+        [TestMethod]
+        [DataRow(3, 2)]
+        [DataRow(4, 2)]
+        [DataRow(8, 2)]
+        [DataRow(10, 2)]
+        [DataRow(12, 2)]
+        [DataRow(20, 2)]
+        public void SetSideUpSetsValidSide(int sides, int newSide)
+        {
+            Die d = new Die(sides);
+            d.SetSideUp(newSide);
+            d.CurrentSide.Should().BeInRange(1, sides);
+        }
     }
 }
 

@@ -33,6 +33,12 @@ namespace DiceRoller
             Roll();
         }
 
+        public void SetSideUp(int newSideUp)
+        {
+            if(newSideUp >= 1 && newSideUp <= NumSides)
+                this.CurrentSide = newSideUp;
+        }
+
         public void Roll()
         {
             Random r = new Random();
