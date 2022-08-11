@@ -92,6 +92,16 @@ namespace DiceRollerTests
             d.SetSideUp(newSide);
             d.CurrentSide.Should().BeInRange(1, sides);
         }
+
+        [TestMethod]
+        public void RollSetsSideCorrectly()
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                def.Roll();
+                def.CurrentSide.Should().BeInRange(1, 6);
+            }
+        }
     }
 }
 
