@@ -35,7 +35,7 @@ namespace UITest
         [Category("UI")]
         public void PromptLabelIsDisplayed()
         {
-            AppResult[] results = app.WaitForElement(c => c.Marked("Select a Die:"));
+            AppResult[] results = app.WaitForElement(c => c.Marked("Select a Die:"  ));
             Assert.IsTrue(results.Any());
         }
 
@@ -50,6 +50,21 @@ namespace UITest
             Assert.IsTrue(app.Query(c => c.Marked("d12")).Any());
             AppResult[] results = app.Query(c => c.Marked("d20"));
             Assert.IsTrue(results.Any());
+        }
+
+        [Test]
+        [Category("UI")]
+        public void OptionsCanBeChecked()
+        {
+            app.Tap(c => c.Marked("d4"));
+
+            Assert.IsTrue(app.Query(c => c.Marked("d4").Invoke("isChecked")).FirstOrDefault().Equals(true));
+
+            app.Tap(c => c.Marked("d6"));
+
+            Assert.IsTrue(app.Query(c => c.Marked("d6").Invoke("isChecked")).FirstOrDefault().Equals(true));
+
+            Assert.IsTrue(app.Query(c => c.Marked("d4").Invoke("isChecked")).FirstOrDefault().Equals(false));
         }
     }
 }
