@@ -66,5 +66,30 @@ namespace UITest
 
             Assert.IsTrue(app.Query(c => c.Marked("d4").Invoke("isChecked")).FirstOrDefault().Equals(false));
         }
+
+        [Test]
+        [Category("UI")]
+        public void RollButtonsAreDisplayed()
+        {
+            AppResult[] results = app.Query(c => c.Property("text").Like("Display * result*"));
+            Assert.IsTrue(results.Length == 2);
+        }
+
+        [Test]
+        [Category("UI")]
+        public void ButtonsCanBeClickedAndResultsAreDisplayed()
+        {
+            app.Tap(c => c.Marked("d4"));
+            app.Tap(c => c.Marked("Display one result"));
+
+            AppResult[] result1 = app.Query(c => c.Property("text").Like("*"));
+            Assert.IsTrue(result1.Length == 1);
+
+            app.Tap(c => c.Marked("d4"));
+            app.Tap(c => c.Marked("Display two results"));
+
+            AppResult[] results2 = app.Query(c => c.Property("text").Like("*"));
+            Assert.IsTrue(results2.Length == 2);
+        }
     }
 }

@@ -9,14 +9,8 @@
         </Frame>
         <StackLayout RadioButtonGroup.GroupName="Dice">
             <Label Text="Select a Die:" />
-            <RadioButton Content="d4" />
-            <RadioButton Content="d6" />
-            <RadioButton Content="d8" />
-            <RadioButton Content="d10" />
-            <RadioButton Content="d12" />
-            <RadioButton Content="d20" />
-            <RadioButton x:Name="d4" Content="d4" Value="4" />
-            <RadioButton x:Name="d6" Content="d6" Value="6" IsChecked="True" />
+            <RadioButton x:Name="d4" Content="d4" Value="4" IsChecked="True" />
+            <RadioButton x:Name="d6" Content="d6" Value="6" />
             <RadioButton x:Name="d8" Content="d8" Value="8" />
             <RadioButton x:Name="d10" Content="d10" Value="10" />
             <RadioButton x:Name="d12" Content="d12" Value="12" />
