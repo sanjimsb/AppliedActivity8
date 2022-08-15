@@ -30,5 +30,26 @@ namespace UITest
             AppResult[] results = app.WaitForElement(c => c.Marked("Welcome to Xamarin.Forms!"));
             Assert.IsTrue(results.Any());
         }
+
+        [Test]
+        [Category("UI")]
+        public void PromptLabelIsDisplayed()
+        {
+            AppResult[] results = app.WaitForElement(c => c.Marked("Select a Die:"));
+            Assert.IsTrue(results.Any());
+        }
+
+        [Test]
+        [Category("UI")]
+        public void OptionsAreDisplayed()
+        {
+            Assert.IsTrue(app.Query(c => c.Marked("d4")).Any());
+            Assert.IsTrue(app.Query(c => c.Marked("d6")).Any());
+            Assert.IsTrue(app.Query(c => c.Marked("d8")).Any());
+            Assert.IsTrue(app.Query(c => c.Marked("d10")).Any());
+            Assert.IsTrue(app.Query(c => c.Marked("d12")).Any());
+            AppResult[] results = app.Query(c => c.Marked("d20"));
+            Assert.IsTrue(results.Any());
+        }
     }
 }
